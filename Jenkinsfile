@@ -37,6 +37,7 @@ node {
     
     stage('Removing image') {
         sh "docker rmi ${app.id}"
+        sh "docker rmi registry.hub.docker.com/ozhank/docker-test:${env.BUILD_NUMBER}"
     }
     
 }
