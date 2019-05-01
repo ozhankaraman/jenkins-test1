@@ -20,7 +20,8 @@ node {
 
         app.inside {
             /*sh 'echo "Tests passed"' */
-            sh 'curl http://localhost:80 || exit 1'
+            /*sh 'curl http://localhost:80 || exit 1'*/
+            sh 'sleep 30'
         }
     }
 
