@@ -1,5 +1,7 @@
 node {
     def app
+    def registry = 'ozhank/docker-test'
+    def registryCredential = 'dockerhub'
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -11,7 +13,16 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("ozhank/docker-test")
+        //app = docker.build("ozhank/docker-test")
+        
+        
+        docker.withRegistry( 'https://' + registry, registryCredential ) {
+			app = docker.build registry + ":$BUILD_NUMBER"
+			app.push()
+        }
+        
+        
+        
     }
 
     stage('Test image') {
