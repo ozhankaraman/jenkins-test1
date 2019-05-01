@@ -19,7 +19,8 @@ node {
          * Just an example */
 
         app.inside {
-            sh 'echo "Tests passed"'
+            /*sh 'echo "Tests passed"' -/
+            sh 'curl http://localhost:80 || exit 1'
         }
     }
 
