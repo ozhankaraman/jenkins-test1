@@ -17,6 +17,7 @@ node {
     stage('Test image') {
         /* Ideally, we would run a test framework against our image.
          * Just an example */
+        sh 'docker run -p 80:80 -d ozhank/docker-test:${env.BUILD_NUMBER}'
         sh 'sleep 240'
         /*app.inside {
             sh 'sleep 120'
