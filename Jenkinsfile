@@ -20,7 +20,11 @@ node {
          * Just an example */
         
         //sh 'docker run -p 80:80 -d ozhank/docker-test:latest'
-        test = sh 'sleep 240'
+        
+        test = sh (script: 'docker run -p 80:80 -d ozhank/docker-test:latest', returnStdout: true).trim()
+        echo "Git committer email: ${test}"
+        
+        sh 'sleep 240'
         /*app.inside {
             sh 'sleep 120'
             sh 'echo "Tests passed"'
