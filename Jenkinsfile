@@ -1,6 +1,6 @@
 node {
     def app
-    def test
+    def test_cont_id
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -21,11 +21,13 @@ node {
         
         //sh 'docker run -p 80:80 -d ozhank/docker-test:latest'
         
-        test = sh (script: 'docker run -p 80:80 -d ozhank/docker-test:latest', returnStdout: true).trim()
-        echo "Git committer email: ${test} ${env.test}"
+        test_cont_id = sh (script: 'docker run -p 80:80 -d ozhank/docker-test:latest', returnStdout: true).trim()
+        echo "Container ID: ${test_cont_id}"
+        sh 'curl http://localhost'
         sh 'sleep 10'
-        sh (script: "docker stop ${test}", returnStdout: true).trim()
-        sh (script: "docker rm ${test}", returnStdout: true).trim()
+        sh 'curl http://localhost'
+        sh (script: "docker stop ${test_cont_id}", returnStdout: true).trim()
+        sh (script: "docker rm ${test_cont_id}", returnStdout: true).trim()
         sh 'sleep 240'
         /*app.inside {
             sh 'sleep 120'
