@@ -17,12 +17,12 @@ node {
     stage('Test image') {
         /* Ideally, we would run a test framework against our image.
          * Just an example */
-
-        app.inside {
+        sh 'sleep 240'
+        /*app.inside {
             sh 'sleep 120'
             sh 'echo "Tests passed"'
-            /*sh 'curl http://localhost:80 || exit 1'*/
-        }
+            sh 'curl http://localhost:80 || exit 1'
+        }*/
     }
 
      stage('Push image') {
