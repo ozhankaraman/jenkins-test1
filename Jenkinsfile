@@ -25,7 +25,7 @@ node {
         echo "Git committer email: ${test}"
         sh 'sleep 60'
         sh (script: 'docker stop ${test}', returnStdout: true).trim()
-        sh (script: 'docker rmi ${test}', returnStdout: true).trim()
+        sh (script: 'docker rm ${test}', returnStdout: true).trim()
         sh 'sleep 240'
         /*app.inside {
             sh 'sleep 120'
