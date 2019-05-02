@@ -1,5 +1,6 @@
 node {
     def app
+    def test
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -17,7 +18,8 @@ node {
     stage('Test image') {
         /* Ideally, we would run a test framework against our image.
          * Just an example */
-        sh 'docker run -p 80:80 -d ozhank/docker-test:latest'
+        test = docker.start("ozhank/docker-test:latest")
+        //sh 'docker run -p 80:80 -d ozhank/docker-test:latest'
         sh 'sleep 240'
         /*app.inside {
             sh 'sleep 120'
