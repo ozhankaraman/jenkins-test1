@@ -24,8 +24,8 @@ node {
         test = sh (script: 'docker run -p 80:80 -d ozhank/docker-test:latest', returnStdout: true).trim()
         echo "Git committer email: ${test} ${env.test}"
         sh 'sleep 10'
-        sh (script: 'docker stop ${env.test}', returnStdout: true).trim()
-        sh (script: 'docker rm ${env.test}', returnStdout: true).trim()
+        sh (script: "docker stop ${env.test}", returnStdout: true).trim()
+        sh (script: "docker rm ${env.test}", returnStdout: true).trim()
         sh 'sleep 240'
         /*app.inside {
             sh 'sleep 120'
