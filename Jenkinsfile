@@ -23,7 +23,6 @@ node {
         
         test_cont_id = sh (script: 'docker run -p 80:80 -d ozhank/docker-test:latest', returnStdout: true).trim()
         echo "Container ID: ${test_cont_id}"
-        sh 'curl http://localhost'
         sh 'sleep 10'
         sh 'curl http://localhost'
         sh (script: "docker stop ${test_cont_id}", returnStdout: true).trim()
