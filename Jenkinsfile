@@ -27,7 +27,7 @@ node {
         sh 'curl http://localhost'
         sh (script: "docker stop ${test_cont_id}", returnStdout: true).trim()
         sh (script: "docker rm ${test_cont_id}", returnStdout: true).trim()
-        sh 'sleep 240'
+        //sh 'sleep 240'
         /*app.inside {
             sh 'sleep 120'
             sh 'echo "Tests passed"'
