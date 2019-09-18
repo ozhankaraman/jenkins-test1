@@ -11,7 +11,8 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-
+        sh 'echo starting'
+        sh 'cat README.md'
         app = docker.build("ozhank/docker-test")
     }
 
