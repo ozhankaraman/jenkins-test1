@@ -5,4 +5,4 @@ Simple Jenkins Test Project which
 
 1) Creates a docker with nginx + php + fpm 
 
-1.2
+1.3
